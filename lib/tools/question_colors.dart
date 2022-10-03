@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class QuestionColors {
@@ -17,9 +15,17 @@ class QuestionColors {
     Colors.blueGrey,
     Colors.lime,
     Colors.teal,
+    Colors.amber,
+    Colors.brown,
+    Colors.lightBlue,
+    Colors.lightGreen,
+    Colors.deepOrange,
+    Colors.deepPurple,
   ];
-  
-  static final Random _random = Random();
 
-  static MaterialColor random() => _colors[_random.nextInt(_colors.length)];
+  static List<MaterialColor> generateRandomColors(int size) {
+    List<int> positions = [for (int i = 0; i < _colors.length; i++) i];
+    positions.shuffle();
+    return [for (int i = 0; i < size; i++) _colors[positions[i]]];
+  }
 }
